@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div>
+		<p>Nhập chiều cao (cm):</p>
+		<input id="inp-height" type="number" />
+	</div>
+	</hr>
+	<div>
+		<p>Nhập cân nặng(kg):</p>
+		<input id="inp-weight" type="number" />
+	</div>
+	<div>
+		<p>Nhập tuổi:</p>
+		<input id="inp-age" type="number" />
+	</div>
+	<button style="margin-top:10px" onclick="onSubmit()">
+		Submit
+	</button>
+	<p id="result" style="display:none"><strong>Tổng số Calo tiêu thụ của bé trong ngày:</strong> <span
+			style="color:#fc625d" name="tdee" /> </p>
+	<p id='result1' style="display:none"><i>Ăn ít hơn <span style="color:#fc625d" name="tdee" /> </i> sẽ ốm nhom nhoa
+	</p>
+	<script>
+		const onSubmit = (e) => {
+			let height = +document.getElementById("inp-height").value
+			let weight = +document.getElementById("inp-weight").value
+			let age = +document.getElementById("inp-age").value
+
+			const bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161
+			const z = 1.55
+			const tdde = bmr * z
+			document.getElementById('result').style = 'display:block'
+			const el = document.getElementsByName("tdee")
+			const arr = [...el]
+			arr.forEach(element => {
+				element.innerText = `${tdde} kcal`
+			});
+			document.getElementById('result1').style = 'display:block'
+		}
+	</script>
+</body>
+
+</html>
