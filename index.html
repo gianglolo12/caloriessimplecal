@@ -25,16 +25,16 @@
 	<button style="margin-top:10px" onclick="onSubmit()">
 		Submit
 	</button>
-	<p id="result" style="display:none"><strong>Tổng số Calo tiêu thụ của bé trong ngày:</strong> <span
+	<p id="result" style="display:none"><strong>Tổng số Calo tiêu thụ của trong ngày:</strong> <span
 			style="color:#fc625d" name="tdee" /> </p>
-	<p id='result1' style="display:none"><i>Ăn ít hơn <span style="color:#fc625d" name="tdee" /> </i> sẽ ốm nhom nhoa
+	<p id='result1' style="display:none"><i>Ăn ít hơn <span style="color:#fc625d" name="tdee" /> </i> sẽ ốm nhom
 	</p>
 	<script>
 		const onSubmit = (e) => {
-			let height = +document.getElementById("inp-height").value
-			let weight = +document.getElementById("inp-weight").value
-			let age = +document.getElementById("inp-age").value
-
+			let height = +document.getElementById("inp-height").value || 0
+			let weight = +document.getElementById("inp-weight").value || 0
+			let age = +document.getElementById("inp-age").value || 0
+			if (height <= 0 || weight <= 0 || age <= 0) return alert("Nhập dữ liệu dô")
 			const bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161
 			const z = 1.55
 			const tdde = bmr * z
